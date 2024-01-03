@@ -74,7 +74,10 @@ def get_fred_data(freq,typedef):
             'TOTRESNS': 'totres',            # Total reserves of depository institutions
             'IOER': 'ioer',                  # Interest rate on excess reserves (also equal to interest on required reserves)
             'DGS10':'dgs10',                 # 10 year treasury rate
-            'T10YIE': 'breakeven10'}         # 10 year breakeven inflation rate 
+            'T10YIE': 'breakeven10',         # 10 year breakeven inflation rate
+            'PCND': 'nondur',                # Non-durable consumption
+            'PCDG': 'dur'                    # Durable consumption
+            }          
 
     df = FredReader(series.keys(), start='1947').read().rename(series, axis='columns')
 
