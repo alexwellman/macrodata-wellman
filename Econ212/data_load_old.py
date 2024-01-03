@@ -68,7 +68,7 @@ def get_fred_data(freq,typedef):
             'COMPNFB': 'w',                  # Compensation per hour in nonfarm business
             'UNRATE': 'u',                   # Unemployment rate
             'USREC': 'USREC',                # NBER Recession indicator
-            'RKNANPUSA666NRUG':'k',          # Capital stock at constant prices (from Penn World tables)      
+            'RKNANPUSA666NRUG': 'k',         # Capital stock at constant prices (from Penn World tables)      
             'NGDPPOT': 'ypotn',              # Nominal potential domestic product (CBO)
             'GDPPOT': 'ypot',                # Real potential GDP
             'TOTRESNS': 'totres',            # Total reserves of depository institutions
@@ -76,7 +76,14 @@ def get_fred_data(freq,typedef):
             'DGS10':'dgs10',                 # 10 year treasury rate
             'T10YIE': 'breakeven10',         # 10 year breakeven inflation rate
             'PCND': 'nondur',                # Non-durable consumption
-            'PCDG': 'dur'                    # Durable consumption
+            'PCDG': 'dur',                   # Durable consumption
+            'GPDI': 'invest',                # Investments
+            'W068RCQ027SBEA': 'govexpen',    # Gov. Expenditures 
+            'RKNANPUSA666NRUG': 'capitalu',  # Capital stock 
+            'RTFPNAUSA632NRUG': 'solow',     # Productivity
+            'B4701C0A222NBEA': 'thours',     # Total hours
+            'LREM64TTUSM156S': 'emplyment',  # Employment
+            'LES1252881600Q': 'mrwage'       # Median real wage
             }          
 
     df = FredReader(series.keys(), start='1947').read().rename(series, axis='columns')
