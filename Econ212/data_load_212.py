@@ -81,9 +81,11 @@ def get_fred_data(freq,typedef):
             'W068RCQ027SBEA': 'govexpen',    # Gov. Expenditures 
             'RTFPNAUSA632NRUG': 'solow',     # Productivity
             'B4701C0A222NBEA': 'thours',     # Total hours
-            'LREM64TTUSM156S': 'emplyment',  # Employment
+            'LREM64TTUSM156S': 'employment',  # Employment
             'LES1252881600Q': 'mrwage',      # Median real wage
-            'TCU': 'capitalu'                # Capital utilization
+            'TCU': 'capitalu',               # Capital utilization
+            'AWHNONAG': 'hpworker',            # Average Weekly Hours of Production and Nonsupervisory Employees, Total Private
+            'A939RX0Q048SBEA': 'gdpcapita',  # Real GDP per capita
             }
 
     df = FredReader(series.keys(), start='1947').read().rename(series, axis='columns')
