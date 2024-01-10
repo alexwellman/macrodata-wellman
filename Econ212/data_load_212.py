@@ -82,6 +82,7 @@ def get_fred_data(freq,typedef):
             'RTFPNAUSA632NRUG': 'solow',     # Productivity
             'B4701C0A222NBEA': 'thours',     # Total hours
             'LREM64TTUSM156S': 'employment',  # Employment
+            'LREM25TTUSM156S': 'employmentm25',  # Employment male 25+
             'LES1252881600Q': 'mrwage',      # Median real wage
             'TCU': 'capitalu',               # Capital utilization
             'AWHNONAG': 'hpworker',            # Average Weekly Hours of Production and Nonsupervisory Employees, Total Private
