@@ -81,6 +81,7 @@ def get_fred_data(freq,typedef):
             'W068RCQ027SBEA': 'govexpen',    # Gov. Expenditures 
             'RTFPNAUSA632NRUG': 'solow',     # Productivity
             'B4701C0A222NBEA': 'thours',     # Total hours
+            #'AWHAE': 'thours',     # Total hours
             'LREM64TTUSM156S': 'employment',  # Employment
             'LREM25TTUSM156S': 'employmentm25',  # Employment male 25+
             'LES1252881600Q': 'mrwage',      # Median real wage
