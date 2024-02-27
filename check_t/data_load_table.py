@@ -20,11 +20,14 @@ def get_fred_data(freq, typedef):
         'PAYEMS': 'N',               # Labor Force (Monthly)
         # 'BANKRUPTCY': 'BK',    
         'CORCACBS': 'CO',           # Charge-offs (Quarterly)   
-        'GFDEBTN': 'D',              # Fed Debt (Quarterly)
-        'LES1252881600Q': 'W',       # Average Hourly Earnings (Monthly)
+        'HCCSDODNS': 'D',              # Household Debt (Quarterly)
+        'LES1252881600Q': 'W_median',       # Median Hourly Earnings (Monthly)
+        'AHETPI': 'W_average',               # Average Hourly Earnings (Monthly)
+        'CES3000000008': 'W_manu',          # Manufacturing Wage (Monthly)
         'PCEPI': 'Pi',               # Inflation (Monthly)
         'FEDFUNDS': 'i',             # Interest Rate (Monthly)
         'A074RC1Q027SBEA': 'tax',    # Income Tax (Quarterly)
+        'GFDEBTN': 'GD',              # Gov. Debt (Quarterly)
     }
     
     # Fetch FRED series data
@@ -40,18 +43,25 @@ def get_fred_data(freq, typedef):
     # Deflate nominal series
     if typedef == 'same_def':
         df['D'] = df['D'] * 100 / gdpdef  # Make sure 'gdpdef' is defined in `series`
+        df['GD'] = df['GD'] * 100 / gdpdef
         df['tax'] = df['tax'] * 100 / gdpdef  # Make sure 'gdpdef' is defined in `series`
+        df['W_average'] = df['W_average'] * 100 / gdpdef  
+        df['W_manu'] = df['W_manu'] * 100 / gdpdef
+
+    # calculate growth rate of W_average and W_manu
+    df['Piw_average'] = df['W_average'].pct_change() * 100
+    df['Piw_manu'] = df['W_manu'].pct_change() * 100
+    df['BG_Y'] = df['GD']/df['Y']
+
+
+    
+
 
     # Interpolate missing data
     if freq == 'Q':
         df.index.name = 'date'
         # interpolate missing data series
         df['BK'].interpolate(inplace=True)
-
-
-    # Reorder the DataFrame to include bankruptcy data between 'N' and 'CO'
-    columns_order = ['Y', 'C', 'G', 'I', 'N', 'BK', 'CO', 'D', 'W', 'Pi', 'i', 'tax']  # Include other series names if necessary
-    df = df[columns_order]
     
     return df
 
